@@ -1,0 +1,7 @@
+{
+  "cpu": "8086_prefetch",
+  "machine": "ega",
+  "driver": "EGA88.DRV",
+  "sha256": "3027415d8dc8410bd7bd42ece6e007424df049e9b739642ed3d8eb3967c79ba4",
+  "source_build": "final01"
+}

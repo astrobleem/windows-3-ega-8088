@@ -1,0 +1,486 @@
+--- original/Include Files, Sample Source Code 1 (050-151-035)/INC/CMACROS.INC
++++ ported/include/CMACROS.INC
+@@ -1,3 +1,16 @@
++; Private EGA8088 real-mode build: reject protected/386 macro modes.
++.8086
++ifdef PMODE
++.err
++endif
++ifdef ?386regs
++if ?386regs
++.err
++endif
++endif
++ifdef TEFTI
++.err
++endif
+ comment $
+ cmacros - assembly macros for interfacing to hhls
+ (C)Copyright Microsoft Corp. 1984-1988
+--- original/DISPLAY/4PLANE/BITBLT/BITBLT.ASM
++++ ported/src/BITBLT.ASM
+@@ -91,7 +91,7 @@
+ 		public	process_stack_code
+ ifdef	THIS_IS_DOS_3_STUFF
+ else
+-	.286p
++	.8086
+ endif
+ 
+ 
+@@ -173,14 +173,14 @@
+ ;	subroutines files are included near the end of this file.
+ 
+ 	.xlist
+-	include ..\..\..\bitblt\GENCONST.BLT	;EQUs
+-	include	          ..\..\CLRCONST.BLT	;EQUs
+-	include	             ..\DEVCONST.BLT	;EQUs
+-	include	..\..\..\bitblt\GENDATA.BLT	;bitmask and phase tables
+-	include	          ..\..\CLRDATA.BLT	;Color/mono specific templates,data
++	include GENCONST.BLT	;EQUs
++	include	          CLRCONST.BLT	;EQUs
++	include	             DEVCONST.BLT	;EQUs
++	include	GENDATA.BLT	;bitmask and phase tables
++	include	          CLRDATA.BLT	;Color/mono specific templates,data
+ ;	include              ..\DEVDATA.BLT	;Driver specific templates,data
+-	include ..\..\..\bitblt\ROPDEFS.BLT	;Raster operation definitions
+-	include	..\..\..\bitblt\ROPTABLE.BLT	;Raster operation code templates
++	include ROPDEFS.BLT	;Raster operation definitions
++	include	ROPTABLE.BLT	;Raster operation code templates
+ 	.list
+ 
+ 
+@@ -189,9 +189,9 @@
+ cProc	BITBLT,<FAR,PUBLIC>,<si,di>
+ 
+ 	.xlist
+-	include	..\..\..\bitblt\GENLOCAL.BLT	;arguments and generic local vars
+-	include	          ..\..\CLRLOCAL.BLT	;color/monochrome-related locals
+-	include	             ..\DEVLOCAL.BLT	;device-related locals
++	include	GENLOCAL.BLT	;arguments and generic local vars
++	include	          CLRLOCAL.BLT	;color/monochrome-related locals
++	include	             DEVLOCAL.BLT	;device-related locals
+ 	.list
+ 
+ cBegin
+@@ -951,7 +951,9 @@
+ phase_proc_50:
+ 	mov	gl_phase_h,al		;Save horizontal phase
+ 	mov	gl_mask_p,bx		;Save phase mask
+-	shr	dx,3			;/8 to get full byte count
++	shr	dx,1			;/8 to get full byte count ; 8086 count-one expansion
++	shr	dx,1
++	shr	dx,1
+ 	jnz	phase_proc_60		;Result is >0, check it out
+ 
+ 
+@@ -1274,18 +1276,18 @@
+ ;	while cleanly preserving the local variable frame.
+ ;-----------------------------------------------------------------------;
+ 
+-	include	..\..\PDEVICE.BLT	;PDevice processing
+-	include	..\..\PATTERN.BLT	;pattern preprocessing
+-	include	..\..\COPYDEV.BLT	;copy_dev procedure
+-	include	   ..\COMPUTEY.BLT	;compute_y procedure
+-	include	   ..\SPECIAL.BLT	;non-compiled BLT subroutines
+-	include	   ..\EXIT.BLT		;device-specific cleanup before exit
++	include	PDEVICE.BLT	;PDevice processing
++	include	PATTERN.BLT	;pattern preprocessing
++	include	COPYDEV.BLT	;copy_dev procedure
++	include	   COMPUTEY.BLT	;compute_y procedure
++	include	   SPECIAL.BLT	;non-compiled BLT subroutines
++	include	   EXIT.BLT		;device-specific cleanup before exit
+ 
+ sEnd	Code
+ 
+ 
+ ifdef	PUBDEFS
+-	include ..\..\..\bitblt\BITBLT.PUB
++	include BITBLT.PUB
+ endif
+ 
+ end
+--- original/DISPLAY/4PLANE/BITBLT/BMC_ITE.ASM
++++ ported/src/BMC_ITE.ASM
+@@ -1050,7 +1050,12 @@
+ 
+ 	mov	si,DIMapSegOFFSET fixed_color_table
+ 	mov	cx,SIZE_FIXED_COLOR_TABLE/2
+-	rep	movs word ptr es:[di], word ptr cs:[si]
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_bmc_ite_1_done
++rc88_bmc_ite_1_copy:
++	movs word ptr es:[di], word ptr cs:[si]
++	loop rc88_bmc_ite_1_copy
++rc88_bmc_ite_1_done:
+ if	SIZE_FIXED_COLOR_TABLE and 1
+ 	movs byte ptr es:[di], byte ptr cs:[si]
+ endif
+--- original/DISPLAY/4PLANE/COLOR/EGA/CBLT.ASM
++++ ported/src/CBLT.ASM
+@@ -334,7 +334,12 @@
+ 
+ 	mov	si,CodeOFFSET cps	;--> plane select logic
+ 	mov	cx,LENGTH_CPS/2
+-	rep	movs wptr es:[di],wptr cs:[si]
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_cblt_1_done
++rc88_cblt_1_copy:
++	movs wptr es:[di],wptr cs:[si]
++	loop rc88_cblt_1_copy
++rc88_cblt_1_done:
+ if	LENGTH_CPS AND 1
+ 	movs	bptr es:[di],bptr cs:[si]
+ endif
+@@ -902,18 +907,16 @@
+ 	or	dh,dh			;Any phase alignment?
+ 	jz	cblt_3280		;  No, so skip alignment
+ 	mov	cl,dh			;Get horizontal phase for rotating
+-	mov	ax,I_ROL_AL_N		;Assume rotate left n times
++	mov	ax,I_ROL_AL_1		;Assume rotate left n times
+ 	cmp	cl,5			;4 or less rotates?
+ 	jc	cblt_3260		;  Yes
+ 	neg	cl			;  No, compute ROR count
+ 	add	cl,8
+-	mov	ah,HIGH I_ROR_AL_N
+-	errnz	<(LOW I_ROL_AL_N)-(LOW I_ROR_AL_N)>
++	mov	ah,HIGH I_ROR_AL_1
++	errnz	<(LOW I_ROL_AL_1)-(LOW I_ROR_AL_1)>
+ 
+ cblt_3260:
+-	stosw				;Stuff the phase alignment rotates
+-	mov	al,cl			;  then the phase alignment code
+-	stosb
++	rep	stosw			;8086: CL count-one rotations; CX=0
+ 
+ ; Do not generate phase masking if there is only 1 src And only 1 dest byte.
+ ; This is not just an optimization, see comments where these flags are set.
+@@ -926,7 +929,12 @@
+ 
+ 	mov	si,CodeOFFSET phase_align
+ 	mov	cl,(PHASE_ALIGN_LEN SHR 1)
+-	rep	movs wptr es:[di],wptr cs:[si]
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_cblt_2_done
++rc88_cblt_2_copy:
++	movs wptr es:[di],wptr cs:[si]
++	loop rc88_cblt_2_copy
++rc88_cblt_2_done:
+ if	PHASE_ALIGN_LEN AND 1
+ 	movs	bptr es:[di],bptr cs:[si]
+ endif
+@@ -941,7 +949,12 @@
+ 	xchg	si,gl_start_fl		;Set new start, get old
+ 	mov	cx,di			;Compute how long fetch is
+ 	sub	cx,si			;  and move the bytes
+-	rep	movs byte ptr es:[di],byte ptr es:[si]
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_cblt_3_done
++rc88_cblt_3_copy:
++	movs byte ptr es:[di],byte ptr es:[si]
++	loop rc88_cblt_3_copy
++rc88_cblt_3_done:
+ 
+ 	subttl	Compile - ROP Generation
+ 	page
+@@ -965,7 +978,8 @@
+ 	mov	ax,gl_operands		;Get back rop data
+ 	mov	bl,ah			;Get count of number of bits to move
+ 	and	bx,HIGH ROPLength
+-	shr	bx,2
++	shr	bx,1 ; 8086 count-one expansion
++	shr	bx,1
+ 	mov	cl,cs:bptr roptable+256[bx];Get length into cx
+ 	xor	ch,ch			;
+ 	errnz	ROPLength-0001110000000000b
+@@ -974,7 +988,12 @@
+ 	and	bx,ROPOffset
+ 	jz	cblt_4020		;Source copy
+ 	lea	si,cs:roptable[bx] 	;--> the template
+-	rep	movs bptr es:[di],bptr cs:[si]			;Move the template
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_cblt_4_done
++rc88_cblt_4_copy:
++	movs bptr es:[di],bptr cs:[si]			;Move the template
++	loop rc88_cblt_4_copy
++rc88_cblt_4_done:
+ 
+ cblt_4020:
+ 	mov	bx,ax			;Keep rop around
+@@ -1212,7 +1231,7 @@
+ 	stosw
+ 
+ cblt_5140:
+-	jmp	short cblt_6000		;Done setting up the innerloop
++	jmp	cblt_6000		;Done setting up the innerloop
+ 	page
+ 
+ ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ;
+@@ -1306,14 +1325,24 @@
+ 	sub	dx,si			;If dx > 0, then loop logic needed
+ 	mov	si,gl_start_fl		;--> fetch code to copy
+ 	mov	ax,cx			;Save a copy of fetch length
+-	rep	movs bptr es:[di],bptr es:[si];Move fetch code and stuff stosb
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_cblt_5_done
++rc88_cblt_5_copy:
++	movs bptr es:[di],bptr es:[si];Move fetch code and stuff stosb
++	loop rc88_cblt_5_copy
++rc88_cblt_5_done:
+ 	mov	si,di			;--> new source (and top of loop)
+ 	sub	si,ax
+ 	mov	bptr es:-1[di],I_STOSB
+ 	dec	bl			;One copy has been made
+ 	mul	bl			;Compute # bytes left to move
+ 	mov	cx,ax			;Set move count
+-	rep	movs bptr es:[di],bptr es:[si];Move the fetches
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_cblt_6_done
++rc88_cblt_6_copy:
++	movs bptr es:[di],bptr es:[si];Move the fetches
++	loop rc88_cblt_6_copy
++rc88_cblt_6_done:
+ 	sub	si,ax			;Restore pointer to start of loop
+ 
+ 	page
+@@ -1391,7 +1420,12 @@
+ cblt_was_no_fetch:
+ cblt_include_fetch:
+ 
+-	rep	movs bptr es:[di],bptr es:[si];Copy the fetch/action/store code
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_cblt_7_done
++rc88_cblt_7_copy:
++	movs bptr es:[di],bptr es:[si];Copy the fetch/action/store code
++	loop rc88_cblt_7_copy
++rc88_cblt_7_done:
+ 	xchg	dh,dl
+ 	mov	es:MASKED_STORE_MASK[di],dx ;Stuff last byte mask into the code
+ 
+@@ -1558,7 +1592,12 @@
+ 	stosw
+ 	lea	si,rot_and_xor		;--> rotate code
+ 	mov	cx,LEN_ROT_AND_XOR/2
+-	rep	movs wptr es:[di],wptr cs:[si]
++	; 8088 interrupt-safe overridden string copy.
++	jcxz rc88_cblt_8_done
++rc88_cblt_8_copy:
++	movs wptr es:[di],wptr cs:[si]
++	loop rc88_cblt_8_copy
++rc88_cblt_8_done:
+ if	LEN_ROT_AND_XOR AND 1
+ 	movs	bptr es:[di],bptr cs:[si]
+ endif
+--- original/DISPLAY/4PLANE/CHARWDTH.ASM
++++ ported/src/CHARWDTH.ASM
+@@ -24,7 +24,7 @@
+ 
+ FIREWALLS = 0
+ 
+-	.286
++	.8086
+ 
+ 	incFont = 1
+ 
+@@ -33,7 +33,7 @@
+ 	include gdidefs.inc
+ 	include macros.mac
+ 	include fontseg.inc
+-	include	color\ega\njmp.mac
++	include	njmp.mac
+ 	.list
+ 
+ 
+--- original/DISPLAY/4PLANE/COLOR/EGA/DEVCONST.BLT
++++ ported/src/DEVCONST.BLT
+@@ -25,7 +25,8 @@
+ ;	and any other factor which could increase the size of the code.
+ 
+ 
+-MAX_BLT_SIZE	=	452		;Max stack space a BLT will require
++; 8086 generated rotations plus threshold-sensitive replication: <=94 bytes growth.
++MAX_BLT_SIZE	=	600		;452 original + 148 bytes conservative allowance
+ 
+ 
+ ifdef	GEN_COLOR_BLT
+--- original/DISPLAY/4PLANE/COLOR/EGA/EGAHIRES/EGAHIRES.ASM
++++ ported/src/EGAHIRES.ASM
+@@ -508,6 +508,11 @@
+ 	assumes es,nothing
+ 
+ physical_enable proc near
++	test	is_protected,WINP
++	jz	short ega88_real_enable
++	xor	ax,ax
++	ret
++ega88_real_enable:
+ 
+ ;----------------------------------------------------------------------------;
+ ; allocate the scratch selector here				             ;
+--- original/DISPLAY/4PLANE/COLOR/EGA/EGAHIRES/EGAHIRES.DEF
++++ ported/src/EGAHIRES.DEF
+@@ -2,7 +2,7 @@
+ 
+ DESCRIPTION 'DISPLAY : 133, 96, 72 : EGA (more than 64K) with Enhanced Color Display'
+ 
+-STUB 'WINSTUB.EXE'
++EXETYPE WINDOWS
+ 
+ DATA PRELOAD FIXED SINGLE
+ 
+--- original/DISPLAY/4PLANE/BITBLT/GENCONST.BLT
++++ ported/src/GENCONST.BLT
+@@ -102,8 +102,6 @@
+ I_RET_FAR		equ	0CBh	;RET	far
+ I_ROL_AL_1		equ	0C0D0h	;ROL	al,1
+ I_ROR_AL_1		equ	0C8D0h	;ROR	al,1
+-I_ROL_AL_N		equ	0C0C0h	;ROL	al,N  -- next byte is N
+-I_ROR_AL_N		equ	0C8C0h	;ROR	al,N  -- next byte is N
+ 
+ I_SHL_BL_1		equ	0E3D0h	;SHL	bl,1
+ I_SS_OVERRIDE		equ	036h	;SS:
+--- original/DISPLAY/4PLANE/MACROS.MAC
++++ ported/src/MACROS.MAC
+@@ -50,7 +50,7 @@
+ wptr	equ	word ptr
+ bptr	equ	byte ptr
+ 		
+-		.286
++		.8086
+ 
+ ;---------------------------------Macro---------------------------------;
+ ; out16
+@@ -369,7 +369,7 @@
+ 
+ GENERIC	equ	0
+ 
+-CPU	equ	GENERIC
++CPU	equ	88
+ ;CPU	equ	88
+ ;CPU	equ	86
+ ;CPU	equ	186
+--- original/DISPLAY/4PLANE/COLOR/EGA/PIXEL.ASM
++++ ported/src/PIXEL.ASM
+@@ -31,7 +31,7 @@
+ ;
+ ;-----------------------------------------------------------------------;
+ 
+-	.286
++	.8086
+ 
+ 	??_out	Pixel
+ 
+--- original/DISPLAY/4PLANE/COLOR/EGA/POLYLINE.ASM
++++ ported/src/POLYLINE.ASM
+@@ -362,7 +362,7 @@
+ 	externB PaletteModified
+ endif
+ 
+-	externFP LineSeg_check_stack
++	externNP LineSeg_check_stack
+ 
+ ifdef PALETTES
+ 	externFP TranslateBrush		;'on-the-fly' translation of brush
+@@ -1529,7 +1529,7 @@
+ ; define the macro
+ 
+ run_the_dda	macro	mylist
+-	local	top_of_run
++	local	top_of_run,ega88_dda_return
+ 
+ top_of_run:
+ 
+@@ -1616,8 +1616,9 @@
+ 
+ ; loop back to the top, while calling the RunRoutine
+ 
+-	push	LineSegOFFSET top_of_run
++	push	word ptr cs:ega88_dda_return
+ 	jmp	S1			; CX = number of pixels to draw
++ega88_dda_return dw LineSegOFFSET top_of_run
+ 	endm
+ ;----------------------------------------------------------------------------;
+ ; The table of DDA routines.						     ;
+--- original/DISPLAY/4PLANE/COLOR/EGA/RLSTRBLT.ASM
++++ ported/src/RLSTRBLT.ASM
+@@ -88,7 +88,7 @@
+ 	externFP unexclude_far		;Clear excluded area
+ endif
+ 
+-	externFP  rCode_check_stack
++	externNP  rCode_check_stack
+ 
+ sBegin	Data
+ 
+--- original/DISPLAY/4PLANE/COLOR/ROBJECT.ASM
++++ ported/src/ROBJECT.ASM
+@@ -23,7 +23,7 @@
+ ;
+ ;-----------------------------------------------------------------------;
+ 
+-	.286
++	.8086
+ MM_ALL		equ	0fh		;all bits of index on 
+ incLogical	= 1			;Include control for gdidefs.inc
+ incBrushStyle	= 1
+--- original/DISPLAY/4PLANE/COLOR/EGA/SPECIAL.BLT
++++ ported/src/SPECIAL.BLT
+@@ -2148,7 +2148,12 @@
+         mov     cx,bx
+         push    si
+         mov     si,di
+-        rep     movs byte ptr es:[di],es:[si]
++        ; 8088 interrupt-safe overridden string copy.
++        jcxz rc88_special_1_done
++rc88_special_1_copy:
++        movs byte ptr es:[di],es:[si]
++        loop rc88_special_1_copy
++rc88_special_1_done:
+         pop     si
+         sub     di,bx
+         add     di,SCREEN_W_BYTES	;next scan on screen
+--- original/DISPLAY/4PLANE/SSWITCH.ASM
++++ ported/src/SSWITCH.ASM
+@@ -27,7 +27,7 @@
+ 
+ 
+ ifdef	OS2_ONLY
+-	.286c
++	.8086
+ endif
+ 
+ 	.xlist
+--- original/DISPLAY/4PLANE/COLOR/EGA/TEXTOUT.ASM
++++ ported/src/TEXTOUT.ASM
+@@ -38,6 +38,16 @@
+ 
+ StrBlt	endp
+ 
++; Preserve named export ordinals with 8086 far tail jumps.
++	externFP RExtTextOut
++	externFP RStrBlt
++	public PExtTextOut, PStrBlt
++PExtTextOut proc far
++	jmp RExtTextOut
++PExtTextOut endp
++PStrBlt proc far
++	jmp RStrBlt
++PStrBlt endp
+ sEnd 	Code
+ 
+ end
+--- /dev/null
++++ ported/src/EGA88.LNK
+@@ -0,0 +1,12 @@
++EGAHIRES.OBJ CURSOR.OBJ BITBLT.OBJ BMC_MAIN.OBJ BMC_ETI.OBJ +
++BMC_ITE.OBJ DISCREEN.OBJ RLEBM.OBJ ENABLE.OBJ POLYLINE.OBJ +
++SCANLINE.OBJ EGASTATE.OBJ CBLT.OBJ PIXEL.OBJ TEXTOUT.OBJ +
++OUTPUT.OBJ RLSTRBLT.OBJ RLBLDSTR.OBJ REALFIX.OBJ REALPRO.OBJ +
++SCANLR.OBJ SSB.OBJ EGAINIT.OBJ 3XSWITCH.OBJ DITHERS.OBJ +
++ROBJECT.OBJ COLORINF.OBJ ENUM.OBJ COLORS.OBJ CONTROL.OBJ +
++CURSORS.OBJ INQUIRE.OBJ SETMODE.OBJ HIDITHER.OBJ DISABLE.OBJ +
++CHKSTK.OBJ CHARWDTH.OBJ FB.OBJ SSWITCH.OBJ
++EGA88.DRV
++EGA88.MAP/MAP/AL:16
++SWINLIBC/NOD
++EGAHIRES.DEF

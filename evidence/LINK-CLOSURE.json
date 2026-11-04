@@ -1,0 +1,1003 @@
+{
+  "result": "PASS",
+  "explicit_objects": 39,
+  "extra_library_code_bytes": 0,
+  "segments": [
+    {
+      "name": "_BLUEMOON",
+      "class": "CODE",
+      "bytes": 940
+    },
+    {
+      "name": "_DATA",
+      "class": "DATA",
+      "bytes": 456
+    },
+    {
+      "name": "_DIMAPS",
+      "class": "CODE",
+      "bytes": 7834
+    },
+    {
+      "name": "_INIT",
+      "class": "CODE",
+      "bytes": 1038
+    },
+    {
+      "name": "_LINES",
+      "class": "CODE",
+      "bytes": 4514
+    },
+    {
+      "name": "_PIXEL",
+      "class": "CODE",
+      "bytes": 648
+    },
+    {
+      "name": "_PROTECT",
+      "class": "CODE",
+      "bytes": 46
+    },
+    {
+      "name": "_REAL",
+      "class": "CODE",
+      "bytes": 8168
+    },
+    {
+      "name": "_SCANLINE",
+      "class": "CODE",
+      "bytes": 1526
+    },
+    {
+      "name": "_TEXT",
+      "class": "CODE",
+      "bytes": 11349
+    }
+  ],
+  "objects": [
+    {
+      "object": "EGAHIRES.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 153,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 0,
+          "bytes": 14,
+          "alignment": 2
+        },
+        {
+          "segment": "_INIT",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 448,
+          "alignment": 2
+        },
+        {
+          "segment": "_PIXEL",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 64,
+          "alignment": 2
+        },
+        {
+          "segment": "_BLUEMOON",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 64,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "CURSOR.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 154,
+          "bytes": 950,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 14,
+          "bytes": 356,
+          "alignment": 2
+        },
+        {
+          "segment": "_BLUEMOON",
+          "class": "CODE",
+          "start": 64,
+          "bytes": 4,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "BITBLT.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 1104,
+          "bytes": 3979,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "BMC_MAIN.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DIMAPS",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 259,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "BMC_ETI.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DIMAPS",
+          "class": "CODE",
+          "start": 260,
+          "bytes": 1777,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "BMC_ITE.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DIMAPS",
+          "class": "CODE",
+          "start": 2038,
+          "bytes": 1588,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "DISCREEN.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DIMAPS",
+          "class": "CODE",
+          "start": 3626,
+          "bytes": 1221,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "RLEBM.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DIMAPS",
+          "class": "CODE",
+          "start": 4848,
+          "bytes": 2986,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "ENABLE.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_INIT",
+          "class": "CODE",
+          "start": 448,
+          "bytes": 164,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "POLYLINE.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_LINES",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 4468,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "SCANLINE.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_SCANLINE",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 1480,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "EGASTATE.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5084,
+          "bytes": 305,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 370,
+          "bytes": 9,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "CBLT.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 5390,
+          "bytes": 1272,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "PIXEL.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6662,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_PIXEL",
+          "class": "CODE",
+          "start": 64,
+          "bytes": 584,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "TEXTOUT.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6662,
+          "bytes": 20,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "OUTPUT.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6682,
+          "bytes": 31,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "RLSTRBLT.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6714,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_REAL",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 2500,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "RLBLDSTR.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6714,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_REAL",
+          "class": "CODE",
+          "start": 2500,
+          "bytes": 2105,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "REALFIX.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6714,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_REAL",
+          "class": "CODE",
+          "start": 4606,
+          "bytes": 1700,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "REALPRO.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6714,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_REAL",
+          "class": "CODE",
+          "start": 6306,
+          "bytes": 1815,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "SCANLR.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6714,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_BLUEMOON",
+          "class": "CODE",
+          "start": 68,
+          "bytes": 515,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "SSB.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6714,
+          "bytes": 270,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "EGAINIT.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6984,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_INIT",
+          "class": "CODE",
+          "start": 612,
+          "bytes": 56,
+          "alignment": 1
+        }
+      ]
+    },
+    {
+      "object": "3XSWITCH.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 6984,
+          "bytes": 65,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "DITHERS.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 7050,
+          "bytes": 856,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 380,
+          "bytes": 4,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "ROBJECT.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 7906,
+          "bytes": 903,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 384,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "COLORINF.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 8810,
+          "bytes": 68,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 384,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "ENUM.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 8878,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 384,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_BLUEMOON",
+          "class": "CODE",
+          "start": 584,
+          "bytes": 214,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "COLORS.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 8878,
+          "bytes": 246,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 384,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "CONTROL.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 9124,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 384,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_BLUEMOON",
+          "class": "CODE",
+          "start": 798,
+          "bytes": 95,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "CURSORS.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 9124,
+          "bytes": 644,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 384,
+          "bytes": 21,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "INQUIRE.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 9768,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 406,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_BLUEMOON",
+          "class": "CODE",
+          "start": 894,
+          "bytes": 39,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "SETMODE.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 9768,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 406,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_BLUEMOON",
+          "class": "CODE",
+          "start": 934,
+          "bytes": 6,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "HIDITHER.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 9768,
+          "bytes": 203,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 406,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "DISABLE.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 9972,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 406,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_INIT",
+          "class": "CODE",
+          "start": 668,
+          "bytes": 39,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "CHKSTK.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 9972,
+          "bytes": 46,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 406,
+          "bytes": 0,
+          "alignment": 2
+        },
+        {
+          "segment": "_LINES",
+          "class": "CODE",
+          "start": 4468,
+          "bytes": 46,
+          "alignment": 2
+        },
+        {
+          "segment": "_PROTECT",
+          "class": "CODE",
+          "start": 0,
+          "bytes": 46,
+          "alignment": 2
+        },
+        {
+          "segment": "_REAL",
+          "class": "CODE",
+          "start": 8122,
+          "bytes": 46,
+          "alignment": 2
+        },
+        {
+          "segment": "_SCANLINE",
+          "class": "CODE",
+          "start": 1480,
+          "bytes": 46,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "CHARWDTH.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 10018,
+          "bytes": 233,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 406,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "FB.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 10252,
+          "bytes": 795,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 406,
+          "bytes": 0,
+          "alignment": 2
+        }
+      ]
+    },
+    {
+      "object": "SSWITCH.OBJ",
+      "contributions": [
+        {
+          "segment": "_TEXT",
+          "class": "CODE",
+          "start": 11048,
+          "bytes": 301,
+          "alignment": 2
+        },
+        {
+          "segment": "_DATA",
+          "class": "DATA",
+          "start": 406,
+          "bytes": 50,
+          "alignment": 2
+        },
+        {
+          "segment": "_INIT",
+          "class": "CODE",
+          "start": 708,
+          "bytes": 330,
+          "alignment": 2
+        }
+      ]
+    }
+  ]
+}

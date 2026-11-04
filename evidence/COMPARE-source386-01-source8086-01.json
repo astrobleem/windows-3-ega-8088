@@ -1,0 +1,65 @@
+{
+  "reference": "source-built EGA88.DRV, 386",
+  "candidate": "source-built EGA88.DRV, 8086_prefetch",
+  "frames": [
+    {
+      "frame": 0,
+      "bytes": 112000,
+      "reference_sha256": "05621b040bdbabb013c9180499416536d0ff5f0d213910225499605d5386a4e9",
+      "candidate_sha256": "05621b040bdbabb013c9180499416536d0ff5f0d213910225499605d5386a4e9",
+      "equal": true
+    },
+    {
+      "frame": 1,
+      "bytes": 112000,
+      "reference_sha256": "09eb2e35caf66ac21287215f3933dde60620a0c6f00aa21087b2fc41893ba746",
+      "candidate_sha256": "09eb2e35caf66ac21287215f3933dde60620a0c6f00aa21087b2fc41893ba746",
+      "equal": true
+    },
+    {
+      "frame": 2,
+      "bytes": 112000,
+      "reference_sha256": "c5fcc34d5c8752ed35f0c3bf9cfd0188a859974f5d65cdd041a5730cf7df00bc",
+      "candidate_sha256": "c5fcc34d5c8752ed35f0c3bf9cfd0188a859974f5d65cdd041a5730cf7df00bc",
+      "equal": true
+    },
+    {
+      "frame": 3,
+      "bytes": 112000,
+      "reference_sha256": "a390aeb78b046bb8c3099e517c9d7ad057a8fcda994142f93434548b4ab095fa",
+      "candidate_sha256": "a390aeb78b046bb8c3099e517c9d7ad057a8fcda994142f93434548b4ab095fa",
+      "equal": true
+    },
+    {
+      "frame": 4,
+      "bytes": 112000,
+      "reference_sha256": "b7de9784edbf2907286953cbd878ecc2860fc0557c4625827dc5d833f9408cac",
+      "candidate_sha256": "b7de9784edbf2907286953cbd878ecc2860fc0557c4625827dc5d833f9408cac",
+      "equal": true
+    },
+    {
+      "frame": 5,
+      "bytes": 112000,
+      "reference_sha256": "768c7e207345459b35c6b3cd1f0ccc6dd5d141594d4739f57403cbd40c874dc5",
+      "candidate_sha256": "768c7e207345459b35c6b3cd1f0ccc6dd5d141594d4739f57403cbd40c874dc5",
+      "equal": true
+    },
+    {
+      "frame": 6,
+      "bytes": 112000,
+      "reference_sha256": "f472ec3869309644266655f05c5e8cf342347b357c93e42073fc21a61aee98ea",
+      "candidate_sha256": "f472ec3869309644266655f05c5e8cf342347b357c93e42073fc21a61aee98ea",
+      "equal": true
+    },
+    {
+      "frame": 7,
+      "bytes": 112000,
+      "reference_sha256": "8581c398db67777e0e758a9fe17db3ed15c3543f993d44e11885cdc313c5d81d",
+      "candidate_sha256": "8581c398db67777e0e758a9fe17db3ed15c3543f993d44e11885cdc313c5d81d",
+      "equal": true
+    }
+  ],
+  "all_equal": true,
+  "reference_log": "REAL_MODE=1\nWIDTH=640\nHEIGHT=350\nCOLORS=16\nSTAGE=palette\nFRAME=0\nSTAGE=phase_memory_screen\nFRAME=1\nSTAGE=rop3_15\nFRAME=2\nSTAGE=rop2_16\nFRAME=3\nSTAGE=overlap_four_directions\nFRAME=4\nSTAGE=clipping\nFRAME=5\nSTAGE=text\nFRAME=6\nSTAGE=screen_memory_screen\nFRAME=7\nFAILURES=0\nCOMPLETE=1\n",
+  "candidate_log": "REAL_MODE=1\nWIDTH=640\nHEIGHT=350\nCOLORS=16\nSTAGE=palette\nFRAME=0\nSTAGE=phase_memory_screen\nFRAME=1\nSTAGE=rop3_15\nFRAME=2\nSTAGE=rop2_16\nFRAME=3\nSTAGE=overlap_four_directions\nFRAME=4\nSTAGE=clipping\nFRAME=5\nSTAGE=text\nFRAME=6\nSTAGE=screen_memory_screen\nFRAME=7\nFAILURES=0\nCOMPLETE=1\n"
+}

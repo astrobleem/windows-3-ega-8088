@@ -1,0 +1,84 @@
+{
+  "instruction_rows_checked": 14738,
+  "multi_prefix_rep": [],
+  "standalone_prefix_rows_checked": 0,
+  "single_prefix_rep_retained": 44,
+  "replacement_counts": {
+    "CBLT.LST": 8,
+    "BITBLT.LST": 1,
+    "BMC_ITE.LST": 1
+  },
+  "replacement_sites": [
+    {
+      "file": "BITBLT.LST",
+      "line": 19311,
+      "address": "0F06",
+      "bytes": "E3 04 26 A4 E2 FC",
+      "source": "jcxz rc88_special_1_done"
+    },
+    {
+      "file": "BMC_ITE.LST",
+      "line": 8003,
+      "address": "0306",
+      "bytes": "E3 04 2E A5 E2 FC",
+      "source": "jcxz rc88_bmc_ite_1_done"
+    },
+    {
+      "file": "CBLT.LST",
+      "line": 9403,
+      "address": "005C",
+      "bytes": "E3 04 2E A5 E2 FC",
+      "source": "jcxz rc88_cblt_1_done"
+    },
+    {
+      "file": "CBLT.LST",
+      "line": 10148,
+      "address": "020B",
+      "bytes": "E3 04 2E A5 E2 FC",
+      "source": "jcxz rc88_cblt_2_done"
+    },
+    {
+      "file": "CBLT.LST",
+      "line": 10168,
+      "address": "0220",
+      "bytes": "E3 04 26 A4 E2 FC",
+      "source": "jcxz rc88_cblt_3_done"
+    },
+    {
+      "file": "CBLT.LST",
+      "line": 10217,
+      "address": "0245",
+      "bytes": "E3 04 2E A4 E2 FC",
+      "source": "jcxz rc88_cblt_4_done"
+    },
+    {
+      "file": "CBLT.LST",
+      "line": 10684,
+      "address": "0336",
+      "bytes": "E3 04 26 A4 E2 FC",
+      "source": "jcxz rc88_cblt_5_done"
+    },
+    {
+      "file": "CBLT.LST",
+      "line": 10701,
+      "address": "034B",
+      "bytes": "E3 04 26 A4 E2 FC",
+      "source": "jcxz rc88_cblt_6_done"
+    },
+    {
+      "file": "CBLT.LST",
+      "line": 10799,
+      "address": "039C",
+      "bytes": "E3 04 26 A4 E2 FC",
+      "source": "jcxz rc88_cblt_7_done"
+    },
+    {
+      "file": "CBLT.LST",
+      "line": 10996,
+      "address": "03DF",
+      "bytes": "E3 04 2E A5 E2 FC",
+      "source": "jcxz rc88_cblt_8_done"
+    }
+  ],
+  "scope": "Decoded emitted instruction prefixes across all linked listings, including adjacent standalone prefix rows; pinned dynamic emitter reviewed separately"
+}

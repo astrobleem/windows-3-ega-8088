@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "driver_sha256": "3027415d8dc8410bd7bd42ece6e007424df049e9b739642ed3d8eb3967c79ba4",
+  "expected_sha256": "3027415d8dc8410bd7bd42ece6e007424df049e9b739642ed3d8eb3967c79ba4",
+  "driver_bytes": 57392,
+  "source_modules": 39,
+  "resource_records": 74,
+  "resource_header_growth": 960,
+  "scope": "Source rebuild, 8086 instruction/listing and link-closure checks; not a new GUI or hardware test"
+}

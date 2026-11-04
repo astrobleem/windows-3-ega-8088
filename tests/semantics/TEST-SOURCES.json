@@ -1,0 +1,13 @@
+{
+  "GENERATED_TRACE_REVIEW.json": "6b95d9983678bd4c017554686c38f538300726a48146e9fdc6ffe15b638295ae",
+  "README.md": "73fd545d4b84290b9d23df3761e2ad56721e4606a56413b1875fb0c3d7b633cd",
+  "RESULTS.json": "de75efc87ddd3f10fcecc24a608ec14080a25da8b437f4886c6347450face8ef",
+  "TRACE_DECODER_SELFTEST.json": "2b83363aa0aed00660b771ec27a919e45da0b0d9a22605bddf92462d32d07a25",
+  "build_source_negative.py": "17afc39a624d518988483b409ec8370a0262dcf17d7cf54c5220e0507afea171",
+  "build_source_semantics.py": "da586d122184ef9f9766cab367d87eb166f7686e09d07986718e6512823da344",
+  "run_semantics.py": "e24b538605f7af362fbd937464eafc9ef6f066d878f73291d6503b8ea10aa218",
+  "templates/base.s": "cc1d7c9dcb1a24dcc80fa05ee3d87add61d3ba8c13d1c857478f27af3c886f46",
+  "templates/emitter.s": "e8cb6c9130cdaa6b852bba4878ace5ceed4f61b171a12bad632bc86a94b18a2d",
+  "templates/rep.s": "a094ac0dae943680e8a4f79c4c2618bb307bb4f23b36c51a5dee5b0f7fb59119",
+  "verify_generated_trace.py": "84793a78dde5debe8c8cec2ca9b595eb7fb386ccd893f963dfae9d0f8b0696c4"
+}

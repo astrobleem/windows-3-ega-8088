@@ -1,0 +1,90 @@
+{
+  "driver_sha256": "3027415d8dc8410bd7bd42ece6e007424df049e9b739642ed3d8eb3967c79ba4",
+  "cpu_model": "8086_prefetch",
+  "true_8088": false,
+  "positive_cases": 290816,
+  "additional_exact_emitter_checks": 8,
+  "positive_suites": {
+    "base": {
+      "passed": true,
+      "cases": 268288,
+      "com_sha256": "edb6d11dca6aef9a658a81a6570f07c04225e866cf83f0d1fd7030d6fd488e85",
+      "assembly_sha256": "014d114ff2c5afe807e21d159ed4793dc4e75302d01601123de467d754678a73",
+      "map_sha256": "63c6060a8f23614af09a657d4876483fbbe3c25cf187c6f9807d51cce7916b2d",
+      "result": "Source-built EGA MAP-derived instruction semantics; 8086-only test instructions\nPASS SHR DX,3: 65536 inputs x 2 flag seeds = 131072 cases\nPASS SHR BX,2: 65536 inputs x 2 flag seeds = 131072 cases\nPASS exact emitter: 8 phases; rotate: 256 bytes x 8 phases x 2 seeds = 4096 cases\nPASS source DDA memory-PUSH/JMP sites and callee return IP: 8 sites x 256 flag seeds = 2048 cases\nALL PASS: 268288 execution cases plus 8 emitter checks\n",
+      "emulator_sha256": "bbd53de9caa572c3712b5578476e26b20f4003a171e068f965aede2c456f9d9c"
+    },
+    "rep": {
+      "passed": true,
+      "cases": 20480,
+      "com_sha256": "1b375473ee3007c4024275b4dc210d09164c8da7686e217932e830c3d2d58cf5",
+      "assembly_sha256": "b9926a92d9e2e9ea09f52b2297c4414226ede8273d5df5c23c5c1d1fa874d840",
+      "map_sha256": "63c6060a8f23614af09a657d4876483fbbe3c25cf187c6f9807d51cce7916b2d",
+      "result": "Source-built EGA exact inline-loop semantics; 8086-prefetch\nALL PASS: 10 sites x 8 counts x 256 flag seeds = 20480 cases; full registers, flags, copy bytes, guard bytes\n",
+      "emulator_sha256": "bbd53de9caa572c3712b5578476e26b20f4003a171e068f965aede2c456f9d9c"
+    },
+    "emitter": {
+      "passed": true,
+      "cases": 2048,
+      "com_sha256": "4535ce2c12a7878867da4287834478e46482abbaa23bce463e1c7fbda267db36",
+      "assembly_sha256": "989064e9f46d6a0209813164188124242b5a582640c7a6a0728f6dc094cd8523",
+      "map_sha256": "63c6060a8f23614af09a657d4876483fbbe3c25cf187c6f9807d51cce7916b2d",
+      "result": "Source-built EGA emitter; only embedded source address relocated\nALL PASS: 8 phases x 256 mode bytes = 2048 emitter cases; output, lengths, registers, defined flags\n",
+      "emulator_sha256": "bbd53de9caa572c3712b5578476e26b20f4003a171e068f965aede2c456f9d9c"
+    }
+  },
+  "negative_controls": {
+    "shift": {
+      "expected_failure_observed": true,
+      "expected_failure_stage": 1,
+      "com_sha256": "703f7431a1d2d54bfaaa72776b11eeb6ff637b7e30b3554f6f1ebe2fd4161fd5",
+      "mutation": {
+        "description": "Replace first SHR DX,1 with SHL DX,1.",
+        "com_file_offset": 1409,
+        "old": "d1ead1ead1eac3",
+        "new": "d1e2d1ead1eac3"
+      },
+      "result": "Source-built EGA MAP-derived instruction semantics; 8086-only test instructions\nFAIL stage=0001 input=0001 pattern=0000 phase=0000 site=0000 flags=F057 expected=0044\n"
+    },
+    "prefix": {
+      "expected_failure_observed": true,
+      "expected_failure_stage": 5,
+      "com_sha256": "763a37482d20b9b248cbe4b088f548c9d06283141ea9fe7e2d2133a191f02d73",
+      "mutation": {
+        "description": "Replace first ES source override with DS.",
+        "com_file_offset": 821,
+        "old": "e30426a4e2fcc3",
+        "new": "e3043ea4e2fcc3"
+      },
+      "result": "Source-built EGA exact inline-loop semantics; 8086-prefetch\nFAIL stage=0005 count_index=0001 pattern=0000 phase=0000 site=0000 flags=F002 expected=0002\n"
+    },
+    "rotate": {
+      "expected_failure_observed": true,
+      "expected_failure_stage": 6,
+      "com_sha256": "7315bcd1693c8a2ac267164e3f10b533ca3dc62f7c1c299c58d44a0ac4dc6633",
+      "mutation": {
+        "description": "Make emitter choose ROR when it should choose ROL.",
+        "com_file_offset": 709,
+        "old": "b8d0c0",
+        "new": "b8d0c8"
+      },
+      "result": "Source-built EGA emitter; only embedded source address relocated\nFAIL stage=0006 mode=0000 pattern=0000 phase=0001 site=0000 flags=F206 expected=0204\n"
+    }
+  },
+  "limitations": [
+    "DOSBox-X 8086 CPU model is experimental and is not an actual 8088.",
+    "No claim of exhaustive Windows graphics behavior, hardware interrupt interleavings, copy overlaps or 16-bit address wrap.",
+    "Shift AF and multi-bit OF are undefined and excluded from comparisons.",
+    "Rotate OF is compared only for no-op or single-bit rotations.",
+    "Emitter requires DF=0 and intentionally changes its working registers and arithmetic flags."
+  ],
+  "portable_runner_smoke": {
+    "passed": true,
+    "expected_failure_stage": 6,
+    "com_sha256": "7315bcd1693c8a2ac267164e3f10b533ca3dc62f7c1c299c58d44a0ac4dc6633",
+    "runner_sha256": "e24b538605f7af362fbd937464eafc9ef6f066d878f73291d6503b8ea10aa218",
+    "emulator_sha256": "bbd53de9caa572c3712b5578476e26b20f4003a171e068f965aede2c456f9d9c",
+    "owned_child_stopped": true,
+    "lease_released": true
+  }
+}

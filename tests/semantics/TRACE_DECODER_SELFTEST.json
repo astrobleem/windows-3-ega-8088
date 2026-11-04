@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "rejected_encodings": [
+    "c0c003",
+    "c1e803",
+    "6601c0",
+    "0f",
+    "d0f0",
+    "b834"
+  ],
+  "valid_control": "d0c0d0c8cb"
+}

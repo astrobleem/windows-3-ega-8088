@@ -1,0 +1,11 @@
+{
+  "started": "2026-11-04T22:41:17.028121+00:00",
+  "timeout": 20,
+  "platform": "posix",
+  "lease_acquired": true,
+  "inventory": [],
+  "watchdog": true,
+  "owned_child_stopped": true,
+  "lease_released": true,
+  "result": "Watchdog after 20 seconds; no QA log. No exact executed first-fault trace."
+}
