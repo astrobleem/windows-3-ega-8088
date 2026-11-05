@@ -71,12 +71,11 @@ During the automated GDI drawing/ROP/clipping suite, captured from the actual SD
 - [Reproducible instruction tests](tests/semantics/README.md)
 - [Generated-code capture](tests/generated-code/README.md)
 - [Source changes and buffer-size bound](docs/CHANGES.md)
-- [Source provenance and prior art](docs/PROVENANCE.md)
 - [Original-file and ported-file hashes](docs/SOURCE-ORIGINS.json)
 - [Assembly changes](docs/SOURCE.patch)
 - [Static ISA audit](evidence/ISA.json), [REP-prefix audit](evidence/REP-AUDIT.json), [link closure](evidence/LINK-CLOSURE.json)
 
-Original source headers and comments are retained. See the provenance document for archive identity and the relationship to Tony814's VGAon8088 work.
+Inspired by Tony814's VGAon8088 work.
 
 ## The Center
 
