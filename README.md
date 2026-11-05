@@ -61,9 +61,9 @@ Use a disposable Windows 3.0 installation for the first test, or retain your exi
 
 ## More screenshots
 
-![During automated GDI drawing/ROP/clipping suite](evidence/EGA88-GDI-suite-running.png)
+![Intentional GDI test pattern: overlapping rectangles and colored lines](evidence/EGA88-GDI-suite-running.png)
 
-During the automated GDI drawing/ROP/clipping suite, captured from the actual SDL display surface.
+Intentional GDI test pattern: overlapping rectangles and colored lines exercise all 16 ROP2 drawing modes. This is expected test output, not display corruption, captured from the actual SDL display surface.
 
 ## Details
 
